@@ -944,12 +944,36 @@ MonoBehaviour:
   trackArea: {fileID: 50804899}
   trackNum: 5
   keys: 120000001400000018000000190000001a000000
+  songMaker: 0
+  startDelay: 0
+  trackNote: 
   score: 0
   scoreText: {fileID: 1659759198}
   streak: 0
   streakText: {fileID: 1311969522}
   mult: 0
   multText: {fileID: 1634425956}
+  song:
+  - noteTimes:
+    - 0.6685526
+    - 0.9347516
+    - 1.9934831
+  - noteTimes:
+    - 0.6685526
+    - 0.9347516
+    - 1.9934831
+  - noteTimes:
+    - 0.6685526
+    - 0.9347516
+    - 1.9934831
+  - noteTimes:
+    - 0.6685526
+    - 0.9347516
+    - 1.9934831
+  - noteTimes:
+    - 0.6685526
+    - 0.9347516
+    - 1.9934831
 --- !u!114 &1076203428
 MonoBehaviour:
   m_ObjectHideFlags: 0

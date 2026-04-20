@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf62cb8bc30f760408764a2a81bf2960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrackBehaviour
-  note: {fileID: 0}
+  note: {fileID: 7140041384376862902, guid: d4619e51cdd6ba64780a59509a9710cc, type: 3}
   slider: {fileID: 0}
   release: {fileID: 0}
 --- !u!1001 &7912995068523929733
@@ -188,10 +188,6 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7597920038487975853, guid: 347dc15864d20fa4a891871e74429fe4, type: 3}
-      propertyPath: noteObject
-      value: 
-      objectReference: {fileID: 7140041384376862902, guid: d4619e51cdd6ba64780a59509a9710cc, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

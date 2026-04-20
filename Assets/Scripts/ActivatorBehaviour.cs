@@ -12,7 +12,8 @@ public class ActivatorBehaviour : MonoBehaviour
     public bool songMaker;
     public GameObject noteObject;
     private float musicStart;
-    private Queue<float> noteTimes;
+    public List<float> noteTimes;
+    public int noteCounter;
 
     private GameObject note;
     private Color colour;
@@ -30,6 +31,8 @@ public class ActivatorBehaviour : MonoBehaviour
     {
         active = false;
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        noteTimes = new List<float>();
+        noteCounter = 0;
         musicStart = Time.time;
     }
 
@@ -40,8 +43,8 @@ public class ActivatorBehaviour : MonoBehaviour
         {
             if (Keyboard.current[key].wasPressedThisFrame)
             {
-                Instantiate(noteObject, transform.position, Quaternion.identity);
-                noteTimes.Enqueue(Time.time - musicStart);
+                Instantiate(noteObject, transform.position, Quaternion.identity, transform.parent);
+                noteTimes.Add(Time.time - musicStart);
             }
         }
         else

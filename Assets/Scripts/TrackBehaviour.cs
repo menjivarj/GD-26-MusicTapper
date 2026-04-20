@@ -6,6 +6,7 @@ public class TrackBehaviour : MonoBehaviour
 {
 
     public GameObject note;
+    private GameObject createdNote;
     public GameObject slider;
     public GameObject release;
     public Queue<GameObject> trackObjects = new Queue<GameObject>();
@@ -28,9 +29,10 @@ public class TrackBehaviour : MonoBehaviour
         
     }
 
-    public void CreateObject(string type)
+    public void CreateNote()
     {
-        trackObjects.Enqueue(Instantiate(note, new Vector2(transform.position.x, rectTransform.rect.height / 2), Quaternion.identity, transform));
+        createdNote = Instantiate(note, new Vector2(transform.position.x, rectTransform.rect.height / 2), Quaternion.identity);
+        createdNote.transform.SetParent(transform, false);
     }
 
     public void KeyHit()

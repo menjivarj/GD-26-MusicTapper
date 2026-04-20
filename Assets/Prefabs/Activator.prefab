@@ -151,6 +151,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ActivatorBehaviour
   key: 0
   active: 0
+  songMaker: 0
+  noteObject: {fileID: 7140041384376862902, guid: d4619e51cdd6ba64780a59509a9710cc, type: 3}
+  noteTimes: []
+  noteCounter: 0
 --- !u!60 &3508739128647600326
 PolygonCollider2D:
   m_ObjectHideFlags: 0
