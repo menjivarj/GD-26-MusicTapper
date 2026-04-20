@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text streakText;
     public int mult;
     public TMP_Text multText;
+    public TMP_Text hitOrMissText;
 
     public List<AudioClip> songAudios = new List<AudioClip>();
     public List<Song> songList;
@@ -114,6 +115,7 @@ public class GameManager : MonoBehaviour
     {
         streak = 0;
         updateStreak();
+        hitOrMissText.SetText("Miss!");
     }
 
     public void Hit(int points)
@@ -122,6 +124,7 @@ public class GameManager : MonoBehaviour
         updateStreak();
         score += mult * points;
         scoreText.SetText(score.ToString());
+        hitOrMissText.SetText("Hit!");
     }
 
     public void updateStreak()

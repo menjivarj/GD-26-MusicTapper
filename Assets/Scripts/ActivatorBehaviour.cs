@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -34,6 +35,7 @@ public class ActivatorBehaviour : MonoBehaviour
         noteTimes = new List<float>();
         noteCounter = 0;
         musicStart = Time.time;
+        GetComponentInChildren<TMP_Text>().SetText(key.ToString());
     }
 
     // Update is called once per frame
@@ -78,7 +80,6 @@ public class ActivatorBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Note"))
         {
             print("Found Note");
-            //GetComponentInParent<TrackBehaviour>().KeyHit();
             note = collision.gameObject;
         }
     }
