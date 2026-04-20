@@ -35,17 +35,4 @@ public class TrackBehaviour : MonoBehaviour
         createdNote.transform.SetParent(transform, false);
     }
 
-    public void KeyHit()
-    {
-        float nextObjectPos = trackObjects.Peek().transform.position.y;
-        if (nextObjectPos < 0)
-        {
-            if (true)
-            {
-
-            }
-        }
-    }
-
-
 }

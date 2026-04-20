@@ -16,8 +16,7 @@ public class GameManager : MonoBehaviour
 
     private float startTime;
     public float startDelay;
-
-    public int[] trackNote;
+    public float noteDelay;
 
     public int score;
     public TMP_Text scoreText;
@@ -25,6 +24,9 @@ public class GameManager : MonoBehaviour
     public TMP_Text streakText;
     public int mult;
     public TMP_Text multText;
+
+    public List<AudioClip> songAudios = new List<AudioClip>();
+    public List<Song> songList;
 
     [System.Serializable]
     public class TrackNotes
@@ -38,7 +40,14 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public List<TrackNotes> song;
+    [System.Serializable]
+    public class Song {
+        public List<TrackNotes> song = new List<TrackNotes>();
+    }
+
+    public int currentSongNum;
+    public int[] trackNoteIndexes;
+    public Song currentSong;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,14 +59,24 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < trackNum; i++) {
             tracks[i] = Instantiate(track, new Vector2((trackRect.rect.width * (i + 0.5f)) - (trackAreaRect.rect.width / 2), 0.0f), Quaternion.identity);
             tracks[i].transform.SetParent(trackArea.transform, false);
-            tracks[i].GetComponentInChildren<ActivatorBehaviour>().key = keys[i];
+            ActivatorBehaviour activator = tracks[i].GetComponentInChildren<ActivatorBehaviour>();
+            activator.key = keys[i];
+            activator.songMaker = songMaker;
         }
-        trackNote = new int[trackNum];
+        trackNoteIndexes = new int[trackNum];
 
         if (songMaker)
         {
-            song = new List<TrackNotes>();
+            currentSong.song = new List<TrackNotes>();
+        } else
+        {
+            currentSong = songList[currentSongNum];
         }
+
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.clip = songAudios[currentSongNum];
+        audioSource.PlayDelayed(startDelay);
+        startTime = Time.time;
     }
 
     // Update is called once per frame
@@ -70,21 +89,21 @@ public class GameManager : MonoBehaviour
                 print("Creating Song");
                 for (int i = 0; i < trackNum; i++)
                 {
-                    song.Add(new TrackNotes(tracks[i].GetComponentInChildren<ActivatorBehaviour>().noteTimes));
+                    currentSong.song.Add(new TrackNotes(tracks[i].GetComponentInChildren<ActivatorBehaviour>().noteTimes));
                 }
             }
         }
         else
         {
             float timeThusFar = Time.time - startTime;
-            for (int i = 0; i < song.Count; i++)
+            for (int i = 0; i < currentSong.song.Count; i++)
             {
-                if (song[i].noteTimes.Count > trackNote[i])
+                if (currentSong.song[i].noteTimes.Count > trackNoteIndexes[i])
                 {
-                    if (song[i].noteTimes[trackNote[i]] < timeThusFar)
+                    if ((currentSong.song[i].noteTimes[trackNoteIndexes[i]] - noteDelay) < timeThusFar)
                     {
                         tracks[i].GetComponent<TrackBehaviour>().CreateNote();
-                        trackNote[i]++;
+                        trackNoteIndexes[i]++;
                     }
                 }
             }

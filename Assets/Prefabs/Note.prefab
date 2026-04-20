@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344c6c96eef1a694b8930da45b6c1bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NoteBehaviour
-  speed: 3
+  speed: 5
   speedMult: 1
 --- !u!50 &4161254821954927508
 Rigidbody2D:
